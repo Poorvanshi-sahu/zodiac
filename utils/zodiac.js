@@ -1,5 +1,4 @@
-// compute zodiac sign from Date object (UTC-safe). Returns lowercase sign name.
-function getZodiacSign(date) {
+module.exports = function getZodiacSign(date) {
     const d = new Date(date);
     const month = d.getUTCMonth() + 1; // 1-12
     const day = d.getUTCDate();
@@ -21,4 +20,3 @@ function getZodiacSign(date) {
 }
 
 
-module.exports = { getZodiacSign };

@@ -1,8 +1,10 @@
-// const express = require("express");
-// const router = express.Router();
+const express = require("express");
+const horoscopeModule = require("../module/horoscopeModule");
+const { isAuthenticated } = require("../middleware/auth");
+const { horoscopeLimiter } = require("../middleware/rateLimit");
+const router = express.Router();
 
-// router.route("/get/horoscope").get(getHoroscope);
+router.get("/today", horoscopeLimiter, isAuthenticated, horoscopeModule.getTodayHoroscope);
+router.get("/history", horoscopeLimiter, isAuthenticated, horoscopeModule.getHoroscopeHistory);
 
-// router.route("/get/history").get(getHistory);
-
-// module.exports = router;
+module.exports = router;
