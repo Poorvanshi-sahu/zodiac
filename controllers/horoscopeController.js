@@ -13,6 +13,17 @@ class HoroscopeController {
         try {
             let { zodiac, userId } = reqData;
 
+            if (!userId) {
+                return {
+                    httpStatus: statusCodes.BAD_REQUEST,
+                    body: {
+                        success: false,
+                        msg: respMsg.doesNotExists("user id"),
+                        data: {}
+                    }
+                }
+            }
+
             if (!zodiac) {
                 return {
                     httpStatus: statusCodes.BAD_REQUEST,
@@ -59,9 +70,16 @@ class HoroscopeController {
 
             let today_horoscope = data[zodiac][day];
 
+            let now = new Date();
+            const istOffset = 5.5 * 60 * 60 * 1000; // IST offset in ms
+            const todayIST = new Date(now.getTime() + istOffset);
+
+            console.log("todayy", todayIST);
+
             historyData = await History.create({
                 userId,
                 zodiac,
+                date: todayIST,
                 horoscopeText: today_horoscope
             });
 

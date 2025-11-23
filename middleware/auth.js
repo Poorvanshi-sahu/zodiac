@@ -27,6 +27,14 @@ exports.isAuthenticated = async (req, res, next) => {
 
         req.user = await user.findById(decoded.userId);
 
+        if (!req.user) {
+            return res.status(statusCodes.BAD_REQUEST).json({
+                success: false,
+                msg: respMsg.loginInFirst,
+                data: {}
+            });
+        }
+
         return next();
     } catch (error) {
         logger.log("Middleware isAunthenticated: ", error);

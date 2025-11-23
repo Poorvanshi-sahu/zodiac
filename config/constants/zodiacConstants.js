@@ -9,15 +9,20 @@ const constants = {
 
     respMsg: {
         created: (elem) => `${elem} created successfully`,
-        wentWrong: "Something Went Wrong",
+        wentWrong: "something Went Wrong",
         alreadyExists: (elem) => `${elem} already exists`,
         doesNotExists: (elem) => `${elem} does not exists`,
-        inValidCreds: "Invalid credentials",
+        inValidCreds: "invalid credentials",
         login: "logged in successfully",
         loggedOut: "logged out successfully",
-        loginInFirst: "User not logged in",
-        ok: "Ok",
+        loginInFirst: "user not logged in",
+        ok: "ok",
         fetched: "fetched Successfully",
+        required: "all fields are required",
+        invalidEmail: "email is invalid",
+        invalidPassword: "password too short min length is 6",
+        invalidBirthdate: "invalid birthdate",
+        invalidName: "invalid name"
     }
 }
 
